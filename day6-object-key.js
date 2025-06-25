@@ -20,7 +20,6 @@ const person2 = {
         math:90,
         science:80
      }
-
 }
 console.log(person2.name);
 console.log(person2.age);
