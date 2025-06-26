@@ -53,4 +53,4 @@ const studentmaks=students.map(student=>student.marks)
 //     return sum + studentTotal;
 // }, 0);
 
-// console.log("Total marks of all students:", totalMark);g
+// console.log("Total marks of all students:", totalMark);
