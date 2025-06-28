@@ -46,8 +46,33 @@ return item.age;
 })
 console.log(stuage)
 
+console.log("All student marks")
 const studentmaks=students.map(student=>student.marks)
  console.log(studentmaks)
+
+ const eachstudentmarks=students.map(eachstudent=>{
+    const studentmarks=eachstudent.marks
+    const totalMark= studentmarks.math+studentmarks.science+studentmarks
+    const ispass=function()
+    {
+        if(totalMark>=40)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    return {
+        name: student.name,
+        totalMark: totalMark,
+        pass:ispass()
+    }
+ });
+ console.log(eachstudentmarks)
+
+
 // const totalMarks = students.reduce((sum, student) => {
 //     const studentTotal = student.marks.math + student.marks.science + student.marks.english;
 //     return sum + studentTotal;
