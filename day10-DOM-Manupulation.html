@@ -17,7 +17,7 @@
         <h5 id="hometown">Your are welcome to our office</h5>
     </div>
     <ul id="fruits">
-        <li>Mango</li>
+        <li id="mango">Mango</li>
         <li>Grapes</li>
         <li>PineApple</li>
     </ul>
@@ -27,23 +27,26 @@
 <script>
     console.log("Document Object Model");
     console.log("It can change and alter,access,remove and add element");
-  
+
     //list all child element
     console.log('list all child element')
-    const fruits=document.getElementById('fruits')
+    const fruits = document.getElementById('fruits')
     const fruitNames = Array.from(fruits.children).map(fruit => fruit.innerText);
-    const fruitname=Array.from(fruits.children).map(fruit=>
-        {
-            fruit.style.color = "red";
+    const fruitname = Array.from(fruits.children).map(fruit => {
+        fruit.style.color = "red";
 
-        }
+    }
     )
     console.log(fruitNames)
 
-        //for parent element
-    const age=document.getElementById('age');
+    //for parent element
+    const age = document.getElementById('age');
     console.log(age.parentElement)
-    
+
+    //get siblingelemnet
+    const mango = document.getElementById('mango');
+    console.log("Next sibling of Mango:", mango.nextSibling);
+
 
     console.log('adding new element');
     const newparagraph = document.createElement('p');//
