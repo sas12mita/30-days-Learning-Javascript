@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="name" style="background-color:rgb(182, 35, 35) ;">You are welcome to out how page</h1>
+
+    <h2 id="age">You are looking for job!</h2>
+
+    <div id="container">
+        <h3 class="locationPokhara">What is your qualification</h3>
+        <h5 id="hometown">Your are welcome to our office</h5>
+    </div>
+    <ul id="fruits">
+        <li>Mango</li>
+        <li>Grapes</li>
+        <li>PineApple</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    console.log("Document Object Model");
+    console.log("It can change and alter,access,remove and add element");
+  
+    //list all child element
+    console.log('list all child element')
+    const fruits=document.getElementById('fruits')
+    const fruitNames = Array.from(fruits.children).map(fruit => fruit.innerText);
+    const fruitname=Array.from(fruits.children).map(fruit=>
+        {
+            fruit.style.color = "red";
+
+        }
+    )
+    console.log(fruitNames)
+
+        //for parent element
+    const age=document.getElementById('age');
+    console.log(age.parentElement)
+    
+
+    console.log('adding new element');
+    const newparagraph = document.createElement('p');//
+    newparagraph.textContent = "You are looking very handsome."
+    const container = document.getElementById('container');
+    container.appendChild(newparagraph);
+
+    console.log("remove element")
+    const locationPokhara = document.querySelector('.locationPokhara');
+    container.removeChild(locationPokhara);
+    const hometown = document.getElementById('hometown');
+    hometown.remove();
+</script>
