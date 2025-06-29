@@ -12,7 +12,9 @@
     <h2 class="age">You are sweet 16 hurry!</h2>
     <div id="container">
         <h3 class="locationPokhara">You are form must beautiful city pokhara</h3>
-        <h5 id="hometown">Your exact location is lekhnath</h5>
+        <h5 class="hometown">Your exact location is lekhnath</h5>
+        <h5 class="hometown">You are very beautiful</h5>
+        <h5 class="hometown">You profile is wow</h5>
     </div>
 </body>
 
@@ -25,7 +27,16 @@
     name.innerText = "hello bikash";//chnage the text of h1 tag
     name.classList.remove("hidden")//remove css
 
-    
+    console.log(' for all queryselectorAll');
+
+    const hometown = document.querySelectorAll('.hometown');
+    hometown.forEach(home => {
+        home.style.color = "blue";
+    });
+
+
+
+
 
     //name.style.display="none";
 
