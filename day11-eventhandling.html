@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn" value="you are so handsome">Click me </button>
+
+    <button class="btn-class">Button 1</button>
+    <button class="btn-class">Button 2</button>
+    <button class="btn-class">Button 3</button>
+
+    <button class="btn-click" value="hey">Click Me</button>
+    <button class="btn-click" value="hi">Click Me</button>
+    <button class="btn-click" value="hello">Click Me</button>
+    <div class="container"></div>
+    <form id="formid">
+        <label>First Name</label>
+        <input type="text" id="name" value="sumita">
+        <br>
+
+        <label>Last Name</label>
+        <input type="text" id="lname" value="poudel">
+        <br>
+        <label>Age:</label>
+        <input type="number" id="age" value="12">
+        <br>
+        <label>Address:</label>
+        <input type="text" id="address" value="Pokhara">
+        <br>
+        <button type="submit" id="submitbtn" value="submit form">Submit Button</button>
+    </form>
+
+    </form>
+</body>
+<script>
+ 
+    //chnage while click on button
+    const btn = document.getElementById("btn");
+    btn.addEventListener('click', (event) => {
+        console.log(btn)
+        console.log(event.target.value)
+        const container = document.querySelector('.container');
+        container.innerHTML = `button clicked`;
+        btn.style.backgroundColor = "green"
+        btn.style.color = "white"
+        document.body.style.background = "lightblue"
+    })
+
+    //use enent delegation
+    document.body.addEventListener('click', function (event) {
+        if (event.target.matches('.btn-class')) {
+            console.log(event.target);
+        }
+    })
+
+    const btnn = document.querySelector('.btn-click');
+    btnn.addEventListener('click', (event) => {
+        console.log("click me clicked", event.target.value)
+    }
+    )
+
+    // //    document.body.addEventListener('click', function (event) {
+    // //     if (event.target.matches('.btn-click')) {
+    // //         console.log(event.target);
+    // //     }
+    // })
+    //form submit suing button click and submit click
+    const submitbtn = document.getElementById("submitbtn");
+    const formid = document.getElementById("formid");
+    submitbtn.addEventListener('click', () => {
+        console.log("form submitted through button click");
+    })
+    formid.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log("form submitted through submit click");
+    })
+
+</script>
+
+</html>
