@@ -1,0 +1,13 @@
+let name = "Sita";
+name = "Gita"; // Allowed
+
+const age = 25;
+//age = 25;// note allowed
+console.log(age);
+console.log(name)
+
+/// Template Literals
+console.log(`Her name is ${name} and her age is ${age}`)
+
+// 3. Destructuring Assignment
+
