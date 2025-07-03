@@ -10,4 +10,11 @@ console.log(name)
 console.log(`Her name is ${name} and her age is ${age}`)
 
 // 3. Destructuring Assignment
+const person = {
+    fullname:"sasmita",
+    phone:12,
+    address:"pokhara"
+}
 
+const {fullname,phone,address}=person;
+console.log(fullname,phone,address)
