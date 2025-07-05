@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<body lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -32,7 +32,7 @@
       margin-bottom: 20px;
     }
 
-    #todo-input {
+    #todo-task {
       flex: 1;
       padding: 10px;
       border: 1px solid #ccc;
@@ -84,7 +84,7 @@
     <h2>📝 My To-Do List</h2>
 
     <div class="input-group">
-      <input type="text" id="todo-input" placeholder="Enter your task..." />
+      <input type="text" id="todo-task" placeholder="Enter your task..." />
       <button id="add-btn">Add</button>
     </div>
     <table id="todo-table">
@@ -96,23 +96,41 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td id="addedSN"></td>
-          <td id="addedTask"></td>
-          <td id="addedStatus"></td>
-          <td id="addedAction">
-            <i class="fas fa-edit fa-2x" title="Edit" style="cursor: pointer; color: #28a745; margin-right: 10px;"></i>
-            <i class="fas fa-trash-alt fa-2x" title="Delete" style="cursor: pointer; color: #dc3545;"></i>
-          </td>
-        </tr>
+      <tbody id="todo-taskhere">
+        
       </tbody>
     </table>
   </div>
 </body>
 
 <script>
-  get
-</script>
+  let count=0;
+  document.getElementById("add-btn").addEventListener('click', (e) => {
+    e.preventDefault();
+    const task = document.getElementById('todo-task');
+    const taskValue = task.value.trim();
+    const taskList = document.getElementById('todo-taskhere');
+    taskList.innerHTML=`
+    <tr>
+      <td></td>
+      
+    </tr>
+    `
+    
+//     const tableSN=document.getElementById('addedSN');
+//     const addedTask = document.getElementById('addedTask');
+//     const addedStatus = document.getElementById('addedStatus');
+//     const addedAction = document.getElementById('addedAction');
 
+//     tableSN.innerHTML=count++;
+//     addedTask.append(taskValue);
+//     addedStatus.innerText=`Pending`;
+//     addedAction.innerHTML = `
+//   <button><i class="fa-solid fa-check"></i></button>
+//   <button><i class="fa-solid fa-pen-to-square"></i></button>
+//   <button><i class="fa-solid fa-trash"></i></button>
+// `;   
+});
+</script>
+</body>
 </html>
