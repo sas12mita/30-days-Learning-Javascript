@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<body lang="en">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>To-Do List</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -79,12 +79,12 @@
 </head>
 
 <body>
-
   <div class="container">
     <h2>📝 My To-Do List</h2>
 
     <div class="input-group">
-      <input type="text" id="todo-task" placeholder="Enter your task..." />
+      <input type="text" id="todo-task" placeholder="Enter your task..." /><br />
+      <small id="error" style="display: none;">Please enter task to do</small>
       <button id="add-btn">Add</button>
     </div>
     <table id="todo-table">
@@ -96,41 +96,87 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody id="todo-taskhere">
-        
-      </tbody>
+      <tbody id="todo-taskhere"></tbody>
     </table>
   </div>
-</body>
 
-<script>
-  let count=0;
-  document.getElementById("add-btn").addEventListener('click', (e) => {
-    e.preventDefault();
+  <script>
+    let count = 0;
     const task = document.getElementById('todo-task');
-    const taskValue = task.value.trim();
     const taskList = document.getElementById('todo-taskhere');
-    taskList.innerHTML=`
-    <tr>
-      <td></td>
-      
-    </tr>
-    `
-    
-//     const tableSN=document.getElementById('addedSN');
-//     const addedTask = document.getElementById('addedTask');
-//     const addedStatus = document.getElementById('addedStatus');
-//     const addedAction = document.getElementById('addedAction');
 
-//     tableSN.innerHTML=count++;
-//     addedTask.append(taskValue);
-//     addedStatus.innerText=`Pending`;
-//     addedAction.innerHTML = `
-//   <button><i class="fa-solid fa-check"></i></button>
-//   <button><i class="fa-solid fa-pen-to-square"></i></button>
-//   <button><i class="fa-solid fa-trash"></i></button>
-// `;   
-});
-</script>
+    document.getElementById("add-btn").addEventListener('click', (e) => {
+      e.preventDefault();
+      const taskValue = task.value.trim();
+      if (taskValue === "") {
+        const error = document.getElementById("error");
+        error.style.display = "block";
+        error.style.color = "red";
+        setTimeout(() => {
+          error.style.display = "none";
+        }, 1000);
+        return;
+      }
+      taskList.innerHTML += `
+      <tr>
+        <td class="sn">${++count}</td>
+        <td class="todotask">${taskValue}</td>
+        <td class="status">Pending</td>
+        <td>
+          <button class="completed" style="background-color:green; color:white; border:none; padding:5px 8px; border-radius:4px; margin-right:5px;" title="Complete">
+            <i class="fas fa-check-circle"></i>
+          </button>
+          <button class="edit" style="background-color:#0064A7; color:white; border:none; padding:5px 8px; border-radius:4px; margin-right:5px;" title="Edit">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="delete" style="background-color:red; color:white; border:none; padding:5px 8px; border-radius:4px;" title="Delete">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>`;
+      task.value = "";
+    });
+
+    taskList.addEventListener("click", (e) => {
+      const target = e.target.closest("button");
+      const row = e.target.closest("tr");
+      if (!target || !row) return;
+
+      const taskCell = row.querySelector(".todotask");
+      const statusCell = row.querySelector(".status");
+
+      if (target.classList.contains("completed")) {
+        taskCell.classList.add("done");
+        statusCell.textContent = "Completed";
+      }
+
+      if (target.classList.contains("delete")) {
+        row.remove();
+      }
+
+      if (target.classList.contains("edit")) {
+        if (target.textContent === "Save") {
+          // Save mode
+          const input = taskCell.querySelector("input");
+          if (!input) return;
+          const newValue = input.value.trim();
+          if (newValue === "") {
+            alert("Task cannot be empty!");
+            return;
+          }
+          taskCell.textContent = newValue;
+          target.textContent = "Edit";
+          target.style.backgroundColor = "#0064A7";
+        } else {
+          // Edit mode
+          const currentText = taskCell.textContent;
+          taskCell.innerHTML = `<input type="text" value="${currentText}" />`;
+          target.textContent = "Save";
+          target.style.backgroundColor = "orange";
+        }
+      }
+    });
+  </script>
 </body>
+
 </html>
