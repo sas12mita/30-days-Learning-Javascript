@@ -11,7 +11,7 @@ promisecode.then(
     resolved=> {
         console.log(resolved);
     },
-    error=>
+    function(error)
     {
         console.log(error);
     }
