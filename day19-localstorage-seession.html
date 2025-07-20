@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Storage Demo</title>
+</head>
+<body>
+  <h2>Local & Session Storage</h2>
+
+  <input type="text" id="nameInput" placeholder="Enter your name">
+  <button onclick="saveToLocal()">Save to LocalStorage</button>
+  <button onclick="saveToSession()">Save to SessionStorage</button>
+  <button onclick="showValues()">Show Stored Values</button>
+
+  <p id="output"></p>
+
+  <script>
+    function saveToLocal() {
+      const name = document.getElementById("nameInput").value;
+      localStorage.setItem("name", name);
+    }
+
+    function saveToSession() {
+      const name = document.getElementById("nameInput").value;
+      sessionStorage.setItem("name", name);
+    }
+
+    function showValues() {
+      const local = localStorage.getItem("name");
+      const session = sessionStorage.getItem("name");
+      document.getElementById("output").innerText =
+        "LocalStorage: " + local + "\nSessionStorage: " + session;
+    }
+  </script>
+</body>
+</html>
