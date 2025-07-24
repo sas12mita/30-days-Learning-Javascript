@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Widget</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    background: #f0f2f5;
+    font-family: sans-serif;
+    margin-top: 10vh;
+}
+
+.weather-widget {
+    width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(to top, #21d4fd, #b721ff);
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+
+.search-bar button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.weather-info {
+    text-align: center;
+}
+
+.weather-icon i {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.temperature {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.location {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.humidity, .wind-speed {
+    text-align: center;
+}
+
+.details i {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.details span {
+    display: block;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <div class="weather-widget">
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="weather-info">
+            <div class="weather-icon">
+                <i class="fas fa-cloud-sun"></i>
+            </div>
+            <div class="temperature">22°C</div>
+            <div class="location">New York</div>
+            <div class="details">
+                <div class="humidity">
+                    <i class="fas fa-tint"></i>
+                    <span>64%</span>
+                    <p>Humidity</p>
+                </div>
+                <div class="wind-speed">
+                    <i class="fas fa-wind"></i>
+                    <span>18 km/h</span>
+                    <p>Wind Speed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
