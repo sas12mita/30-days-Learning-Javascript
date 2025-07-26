@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,112 +9,138 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-    display: flex;
-    justify-content: center;
-    height: 50vh;
-    background: #f0f2f5;
-    font-family: sans-serif;
-    margin-top: 10vh;
-}
+            display: flex;
+            justify-content: center;
+            height: 50vh;
+            background: #f0f2f5;
+            font-family: sans-serif;
+            margin-top: 10vh;
+        }
 
-.weather-widget {
-    width: 350px;
-    padding: 20px;
-    border-radius: 20px;
-    background: linear-gradient(to top, #21d4fd, #b721ff);
-    color: white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-}
+        .weather-widget {
+            width: 350px;
+            padding: 20px;
+            border-radius: 20px;
+            background: linear-gradient(to top, #21d4fd, #b721ff);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
 
-.search-bar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
 
-.search-bar input {
-    width: 80%;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-}
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+        }
 
-.search-bar button {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background: white;
-    cursor: pointer;
-}
+        .search-bar button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
 
-.weather-info {
-    text-align: center;
-}
+        .weather-info {
+            text-align: center;
+        }
 
-.weather-icon i {
-    font-size: 80px;
-    margin-bottom: 20px;
-}
+        .weather-icon i {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
 
-.temperature {
-    font-size: 60px;
-    font-weight: bold;
-}
+        .temperature {
+            font-size: 60px;
+            font-weight: bold;
+        }
 
-.location {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
+        .location {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-.details {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
+        .details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
 
-.humidity, .wind-speed {
-    text-align: center;
-}
+        .humidity,
+        .wind-speed {
+            text-align: center;
+        }
 
-.details i {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
+        .details i {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
-.details span {
-    display: block;
-    font-weight: bold;
-}
+        .details span {
+            display: block;
+            font-weight: bold;
+        }
     </style>
 </head>
+
 <body>
     <div class="weather-widget">
         <div class="search-bar">
-            <input type="text" placeholder="Search">
-            <button><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="enter city name" id="city">
+            <button id="bnt-serach"><i class="fas fa-search"></i></button>
         </div>
         <div class="weather-info">
             <div class="weather-icon">
                 <i class="fas fa-cloud-sun"></i>
             </div>
-            <div class="temperature">22°C</div>
-            <div class="location">New York</div>
+            <div class="temperature" id="tem"></div>
+            <div class="location" id="loc"></div>
             <div class="details">
                 <div class="humidity">
                     <i class="fas fa-tint"></i>
-                    <span>9ph4%</span>
+                    <span id="hum"> </span>
                     <p>Humidity</p>
                 </div>
                 <div class="wind-speed">
                     <i class="fas fa-wind"></i>
-                    <span>18 km/h</span>
+                    <span id="wind">  </span>
                     <p>Wind Speed</p>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const btnsearch = document.getElementById('bnt-serach');
+        btnsearch.addEventListener('click', async function () {
+            const city = document.getElementById('city').value;
+            const apiKey = "43a8a0456b16a73eeb1910753cd1011f";
+            try {
+                const weather = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+                );
+                const weatherData = await weather.json();
+                console.log(weatherData);
+                document.getElementById('tem').textContent= weatherData.main.temp
+                document.getElementById('loc').textContent = weatherData.name
+                document.getElementById('hum').textContent = weatherData.main.humidity
+                document.getElementById('wind').textContent = weatherData.wind.speed
+        }
+            catch (e) {
+                console.log(e);
+            }
+
+        })
+
+    </script>
 </body>
+
 </html>
