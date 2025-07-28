@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expenses - Family Expense Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: "Poppins", sans-serif;
             background-color: #f4f7fa;
         }
 
@@ -19,18 +20,46 @@
             min-height: 100vh;
         }
 
-        .sidebar a {
+        .sidebar a.nav-link {
             color: #ecf0f1;
-            text-decoration: none;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
 
-        .sidebar a.active,
-        .sidebar a:hover {
+        .sidebar a.nav-link.active,
+        .sidebar a.nav-link:hover {
             background-color: #34495e;
         }
 
-        .text-expense {
+        .amount {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .income {
+            color: #198754;
+            /* Bootstrap success green */
+        }
+
+        .expense {
             color: #dc3545;
+            /* Bootstrap danger red */
+        }
+
+        .balance {
+            color: #0d6efd;
+            /* Bootstrap primary blue */
+        }
+
+        /* Fix for the footer positioning */
+        .sidebar .position-sticky {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
         }
     </style>
 </head>
@@ -43,16 +72,26 @@
                 <div class="position-sticky">
                     <h2 class="h4 p-3 text-center">Family Tracker</h2>
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="income.html">Income</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="expenses.html">Expenses</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="income.html">Income</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="expenses.html">Expenses</a>
+                        </li>
                     </ul>
+                    <div class="sidebar-footer p-3 text-center">
+                        <p class="mb-0">© 2025 Poudel Family</p>
+                    </div>
                 </div>
             </nav>
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <header class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <header
+                    class="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Expenses</h1>
                     <div class="user-info">
                         <span>Welcome, [Poudel Family]</span>
@@ -68,7 +107,8 @@
                         <form id="expense-form">
                             <div class="mb-3">
                                 <label for="expense-desc" class="form-label">Description</label>
-                                <input type="text" class="form-control" id="expense-desc" required placeholder="e.g., Grocery Shopping" />
+                                <input type="text" class="form-control" id="expense-desc" required
+                                    placeholder="e.g., Grocery Shopping" />
                             </div>
                             <div class="mb-3">
                                 <label for="expense-category" class="form-label">Category</label>
@@ -86,7 +126,8 @@
                                 <label for="expense-amount" class="form-label">Amount</label>
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" id="expense-amount" required placeholder="e.g., 150.00" />
+                                    <input type="number" class="form-control" id="expense-amount" required
+                                        placeholder="e.g., 150.00" />
                                 </div>
                             </div>
                             <div class="mb-3">
