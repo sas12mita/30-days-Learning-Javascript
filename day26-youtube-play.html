@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Video Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      max-width: 600px;
+    }
+    iframe {
+      margin-top: 20px;
+      width: 100%;
+      max-width: 600px;
+      height: 340px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Enter YouTube URL</h2>
+  <input type="text" id="youtubeLink" placeholder="Paste YouTube URL here">
+  <button id="displayBtn">Display Video</button>
+
+  <div id="videoContainer"></div>
+
+  <script>
+    function getYouTubeVideoID(url) {
+      const pattern = /(?:youtube\.com\/.*v=|youtu\.be\/)([^&\n?#]+)/;
+      const match = url.match(pattern);
+      return match ? match[1] : null;
+    }
+
+    document.getElementById('displayBtn').addEventListener('click', function () {
+      const url = document.getElementById('youtubeLink').value.trim();
+      const videoId = getYouTubeVideoID(url);
+      const container = document.getElementById('videoContainer');
+
+      if (videoId) {
+        container.innerHTML = `
+          <iframe src="https://www.youtube.com/embed/${videoId}" 
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen></iframe>`;
+      } else {
+        container.innerHTML = `<p style="color:red;">Invalid YouTube URL</p>`;
+      }
+    });
+  </script>
+
+</body>
+</html>
